@@ -3,9 +3,13 @@ from itertools import permutations
 
 def ij_to_ptn(i, j, dim):
     row = str(dim - i)
-    col = chr(j + ord("a"))
+    col = chr(j + ord('a'))
     return col + row
 
+def ptn_to_ij(ptn, dim):
+    i = dim - int(ptn[1])
+    j = ord(ptn[0]) - ord('a')
+    return i, j
 
 # for i in range(8):
 #     for j in range(8):
