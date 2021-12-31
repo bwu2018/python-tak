@@ -131,9 +131,23 @@ class Board():
         return None
 
     def is_flats_win(self):
-        # TODO:
-        if (self.white_stones_remaining == 0 and self.white_capstones_remaining == 0) or (self.black_stones_remaining == 0 and self.black_capstones_remaining ==0):
-            return True
+        white_score = 0
+        black_score = 1
+        for i in self.board:
+            for j in i:
+                if j.top_color():
+                    white_score += 1
+                else:
+                    black_score += 1
+        if white_score + black_score == self.dim * self.dim or (self.white_stones_remaining == 0 and self.white_capstones_remaining == 0) or (self.black_stones_remaining == 0 and self.black_capstones_remaining == 0):
+            if white_score > black_score:
+                return 'white'
+            elif black_score > white_score:
+                return 'black'
+            elif white_score == black_score:
+                return 'draw'
+            else:
+                return None
         
 
     # ptn: portable tak notation
